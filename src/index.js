@@ -1,3 +1,5 @@
+// npm
+import fs from 'fs';
 import { OctoServer } from '@hamistudios/octo';
 
 // routes
@@ -20,6 +22,8 @@ server.start((listener) => {
     address,
     port,
   } = listener.address();
+
+  console.log(fs.readFileSync('./src/octo_ascii.txt').toString());
 
   console.log(`Server Started.\n  http://${address}:${port}`);
 });
