@@ -15,6 +15,11 @@ server.middleware(LoggerMiddleware);
 server.route('/', IndexPage);
 
 // start the server
-server.start(null, () => {
-  console.log('Server Started');
+server.start((listener) => {
+  const {
+    address,
+    port,
+  } = listener.address();
+
+  console.log(`Server Started.\n  http://${address}:${port}`);
 });
