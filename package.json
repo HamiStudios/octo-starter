@@ -1,0 +1,40 @@
+{
+  "name": "@hamistudios/octo-starter",
+  "version": "0.1.0-beta.0",
+  "description": "a starting ground for octo",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production npm-run-all build start:prod",
+    "dev": "cross-env NODE_ENV=development npm-run-all start:dev",
+    "start:prod": "node lib/index.js",
+    "start:dev": "nodemon src/index.js --exec babel-node",
+    "build:clean": "rm -rf ./lib",
+    "build:babel": "babel src -d lib",
+    "build": "npm-run-all build:clean build:babel",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/hammy2899/octo-starter.git"
+  },
+  "keywords": [
+    "starter",
+    "example",
+    "demo",
+    "octo"
+  ],
+  "author": "HamiStudios",
+  "license": "MIT",
+  "dependencies": {
+    "@hamistudios/octo": "^0.1.0-beta.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.1",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "npm-run-all": "^4.1.3"
+  }
+}
