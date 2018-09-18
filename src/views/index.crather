@@ -16,7 +16,11 @@
       <div class="column">
         <h2 class="ui header" style="margin-bottom: 0;">Octo Framework</h2>
         <p>Demo/Starter website</p>
-        <a href="https://github.com/HamiStudios/octo" target="_blank"><i class="github icon"></i> GitHub</a>
+        <p>
+          Current view: <code>/src/views/index.crather</code>
+          <br/>
+          Current route: <code>/src/routes/IndexPage.js</code>
+        </p>
       </div>
     </div>
 	</body>
