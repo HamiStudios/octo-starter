@@ -26,7 +26,10 @@
   "author": "HamiStudios",
   "license": "MIT",
   "dependencies": {
-    "@hamistudios/octo": "^0.1.0-beta.0"
+    "@hamistudios/crather": "^2.0.2",
+    "@hamistudios/octo": "^0.1.0-beta.0",
+    "fomantic-ui-css": "^2.5.0",
+    "morgan": "^1.9.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",

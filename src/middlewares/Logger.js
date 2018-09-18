@@ -1,9 +1,15 @@
+// npm
 import { OctoMiddleware } from '@hamistudios/octo';
+import morgan from 'morgan';
 
 class LoggerMiddleware extends OctoMiddleware {
   use() {
-    console.log(this.getRequest().getMethod().toString(), this.getRequest().getOriginalUrl());
-    this.nextHandler();
+    // enable morgan (https://github.com/expressjs/morgan) to print http logs
+    morgan('combined')(
+      this.getRequest().getExpressRequest(), // request
+      this.getResponse().getExpressResponse(), // response
+      () => this.nextHandler(), // next
+    );
   }
 }
 

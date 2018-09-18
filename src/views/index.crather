@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>{{ title }}</title>
+
+    <link rel="stylesheet" href="/assets/fomantic-ui-css/semantic.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+	</head>
+
+	<body>
+    <div class="ui centered middle aligned two column grid">
+      <div class="column">
+        <img src="/assets/img/logo.png" class="ui right floated image">
+      </div>
+      <div class="column">
+        <h2 class="ui header" style="margin-bottom: 0;">Octo Framework</h2>
+        <p>Demo/Starter website</p>
+        <a href="https://github.com/HamiStudios/octo" target="_blank"><i class="github icon"></i> GitHub</a>
+      </div>
+    </div>
+	</body>
+</html>

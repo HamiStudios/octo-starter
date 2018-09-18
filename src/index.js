@@ -1,39 +1,35 @@
 // npm
 import fs from 'fs';
-import { OctoServer, OctoRouter } from '@hamistudios/octo';
+import { OctoServer } from '@hamistudios/octo';
 
-// routes
-import IndexPage from './routes/IndexPage';
+// libs
+import setRoutes from './init/routes';
+import setMiddlewares from './init/middlewares';
+import setRenderEngine from './init/renderEngine';
+import serveStatic from './init/serveStatic';
 
-// api routes
-import GetUser from './routes/api/GetUser';
-
-// middlewares
-import LoggerMiddleware from './middlewares/Logger';
-
+// create a new OctoServer
 const server = new OctoServer();
 
-// add middlewares
-server.middleware(LoggerMiddleware);
+// set render engine
+setRenderEngine(server);
 
-// add routes
-server.route('/', IndexPage);
+// set the routes & middlewares
+setRoutes(server);
+setMiddlewares(server);
 
-// api router
-const apiRouter = new OctoRouter('/api');
-apiRouter.route('/user', GetUser);
-
-// add the router to the server
-server.router(apiRouter);
+// serve static content
+serveStatic(server);
 
 // start the server
 server.start((listener) => {
+  // get server details
   const {
     address,
     port,
   } = listener.address();
 
+  // print ascii octopus and server url
   console.log(fs.readFileSync('./src/octo_ascii.txt').toString());
-
   console.log(`Server Started.\n  http://${address}:${port}`);
 });
