@@ -9,7 +9,10 @@ import setRenderEngine from './init/renderEngine';
 import serveStatic from './init/serveStatic';
 
 // create a new OctoServer
-const server = new OctoServer();
+const server = new OctoServer({
+  host: 'localhost',
+  port: 8585,
+});
 
 // set render engine
 setRenderEngine(server);
