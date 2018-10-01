@@ -7,6 +7,7 @@ import setRoutes from './init/routes';
 import setMiddlewares from './init/middlewares';
 import setRenderEngine from './init/renderEngine';
 import serveStatic from './init/serveStatic';
+import setErrorHandlers from './init/errorHandlers';
 
 // create a new OctoServer
 const server = new OctoServer({
@@ -20,6 +21,7 @@ setRenderEngine(server);
 // set the routes & middlewares
 setRoutes(server);
 setMiddlewares(server);
+setErrorHandlers(server);
 
 // serve static content
 serveStatic(server);

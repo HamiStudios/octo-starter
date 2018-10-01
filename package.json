@@ -27,7 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "@hamistudios/crather": "^2.0.2",
-    "@hamistudios/octo": "^0.1.0-beta.0",
+    "@hamistudios/octo": "^1.0.0",
     "fomantic-ui-css": "^2.5.0",
     "morgan": "^1.9.1"
   },
