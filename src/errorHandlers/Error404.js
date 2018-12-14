@@ -1,9 +1,11 @@
+// npm
 import { OctoErrorHandler } from '@hamistudios/octo';
 
 class Error404 extends OctoErrorHandler {
-  error500() {
-    console.log('500 error');
-    this.getResponse().send('500 - internal server error');
+  static error = 404;
+
+  handle() {
+    this.getResponse().send('404 - Page not found');
   }
 }
 

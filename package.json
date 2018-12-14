@@ -1,6 +1,6 @@
 {
   "name": "@hamistudios/octo-starter",
-  "version": "0.1.0-beta.0",
+  "version": "2.0.0-alpha.1",
   "description": "a starting ground for octo",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   "license": "MIT",
   "dependencies": {
     "@hamistudios/crather": "^2.0.2",
-    "@hamistudios/octo": "^1.0.0",
+    "@hamistudios/octo": "^2.0.0-alpha.1",
     "fomantic-ui-css": "^2.5.0",
     "morgan": "^1.9.1"
   },
@@ -35,8 +35,10 @@
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.1",
     "@babel/node": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.0.0",
     "cross-env": "^5.2.0",
+    "eslint-plugin-babel": "^5.3.0",
     "nodemon": "^1.18.4",
     "npm-run-all": "^4.1.3"
   }

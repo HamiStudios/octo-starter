@@ -1,40 +1,54 @@
-// npm
-import fs from 'fs';
-import { OctoServer } from '@hamistudios/octo';
+// node
+import path from 'path';
 
-// libs
-import setRoutes from './init/routes';
-import setMiddlewares from './init/middlewares';
-import setRenderEngine from './init/renderEngine';
-import serveStatic from './init/serveStatic';
-import setErrorHandlers from './init/errorHandlers';
+// npm
+import { OctoApp, OctoServer } from '@hamistudios/octo';
+import Crather from '@hamistudios/crather';
+
+// routes
+import IndexPage from './routes/IndexPage';
+
+// operations
+import LoggerOperation from './operations/Logger';
+
+// error handlers
+import Error404 from './errorHandlers/Error404';
 
 // create a new OctoServer
-const server = new OctoServer({
-  host: 'localhost',
-  port: 8585,
+const server = new OctoServer();
+
+// setup render engine (crather)
+server.set('views', path.resolve(__dirname, './views'));
+server.set('templates', path.resolve(__dirname, './views/templates'));
+server.set('scripts', path.resolve(__dirname, './views/scripts'));
+server.setRenderEngine('crather', Crather.express());
+server.setDefaultRenderData({
+  title: 'Octo Starter',
 });
 
-// set render engine
-setRenderEngine(server);
+// create new OctoApp
+const app = new OctoApp({
+  sendSoftwareHeader: true,
+  helmet: true,
+});
 
-// set the routes & middlewares
-setRoutes(server);
-setMiddlewares(server);
-setErrorHandlers(server);
+// serve public directory as static content
+server.static(path.resolve(__dirname, './public'), '/assets');
+// serve fomantic-ui-css npm module as static content
+server.staticModule('fomantic-ui-css', '/assets');
 
-// serve static content
-serveStatic(server);
+// add logger
+app.addOperation(LoggerOperation);
+
+// add index page route
+app.addRoute(IndexPage);
+
+// add 404 error handler
+app.addErrorHandler(Error404);
 
 // start the server
-server.start((listener) => {
-  // get server details
-  const {
-    address,
-    port,
-  } = listener.address();
-
-  // print ascii octopus and server url
-  console.log(fs.readFileSync('./src/octo_ascii.txt').toString());
-  console.log(`Server Started.\n  http://${address}:${port}`);
-});
+app.start(server)
+  .then(() => {
+    console.log('Server Started', server.getURL());
+  })
+  .catch(console.error);

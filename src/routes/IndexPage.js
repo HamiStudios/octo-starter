@@ -1,7 +1,10 @@
-import { OctoRoute } from '@hamistudios/octo';
+import { OctoRoute, OctoMethod } from '@hamistudios/octo';
 
 class IndexPage extends OctoRoute {
-  get() {
+  static method = OctoMethod.GET;
+  static path = '/';
+
+  render() {
     this.getResponse()
       .render('index');
   }
